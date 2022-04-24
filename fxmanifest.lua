@@ -1,22 +1,34 @@
-fx_version 'bodacious'
+fx_version 'cerulean'
 game 'gta5'
+lua54 'yes'
 
-author 'InZidiuZ'
-description 'Legacy Fuel'
-version '1.3'
+description 'Fueling system utilising qb-target'
+version '1.1'
 
-shared_script 'config.lua'
+shared_scripts { 
+    '@qb-core/shared/locale.lua',
+    'locales/tc.lua', -- Change this to your preferred language
+	'config.lua'
+}
 
 client_scripts {
-	'functions/functions_client.lua',
-	'source/fuel_client.lua'
+	'client/client_functions.lua',
+	'client/client_interactions.lua',
+	'client/client.lua'
 }
 
 server_scripts {
-	'source/fuel_server.lua'
+	'server/server.lua'
+}
+
+dependencies {
+	'qb-core'
 }
 
 exports {
 	'GetFuel',
-	'SetFuel'
+	'SetFuel',
+	'IsSiphonFuelAllowed',
+	'IsPetrolCanRefuelAllowed',
+	'CanPumpRefuelPetrolCan',
 }
